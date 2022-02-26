@@ -21,12 +21,12 @@ contract KaseiCoinCrowdsale is Crowdsale, MintedCrowdsale, CappedCrowdsale, Time
     
     // Create contructor for Crowdsale, Capped, Timed, and Refundable and then initialize.
     constructor(
-        uint rate,
-        address payable wallet,
-        KaseiCoin token,
-        uint goal,
-        uint open,
-        uint close
+        uint256 rate, // rate in TKNbits
+        address payable wallet, // sale beneficiary
+        KaseiCoin token, // the KaseiCoin itself that the KaseiCoinCrowdsale will work with
+        uint goal, // the crowdsale goal
+        uint open, // the crowdsale opening time
+        uint close // the crowdsale closing time
     ) public
     Crowdsale(rate, wallet, token)
     CappedCrowdsale(goal)
@@ -44,10 +44,10 @@ contract KaseiCoinCrowdsaleDeployer {
 
     // Add the constructor.
     constructor(
-        string memory name,
-        string memory symbol,
-        address payable wallet,
-        uint goal
+        string memory name, // coin name
+        string memory symbol, // coin symbol
+        address payable wallet, // sale beneficiary
+        uint goal // the crowdsale goal
     ) public {
 
         // Create a new instance of the KaseiCoin contract.
@@ -56,7 +56,7 @@ contract KaseiCoinCrowdsaleDeployer {
         // Assign the token contract’s address to the `kaseiTokenAddress` variable.
         kaseiTokenAddress = address(token);
         
-        // Create a new instance of the `KaseiCoinCrowdsale` contract
+        // Create a new instance of the `KaseiCoinCrowdsale` contract 
         KaseiCoinCrowdsale kaseiCrowdsale = new KaseiCoinCrowdsale(1, wallet, token, goal, now, now + 24 weeks);
         
         // Assign the `KaseiCoinCrowdsale` contract’s address to the `kaseiCrowdsaleAddress` variable.
