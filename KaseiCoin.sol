@@ -15,7 +15,7 @@ contract KaseiCoin is ERC20, ERC20Detailed, ERC20Mintable {
     constructor(
         string memory name, // coin name
         string memory symbol, // coin symbol
-        uint initialSupply // intial supply of coins to mint
+        uint initialSupply // intial supply of coins to mint will mint to deployers wallet
         ) 
         ERC20Detailed(name, symbol, 18) public {
 
